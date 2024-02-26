@@ -66,8 +66,3 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'registration/signup.html', {'form': form})
-
-
-def pos_view(request):
-    products = Product.objects.all()
-    return render(request, 'inventory/pos.html', {'products': products})
