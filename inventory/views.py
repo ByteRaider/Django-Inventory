@@ -1,10 +1,12 @@
 from django.db.models import Q
+from django.contrib.auth import login, authenticate
 from django.http import HttpResponse
 from django.urls import reverse_lazy
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 import csv
 from .models import Product, Category, Transaction
+from .forms import SignUpForm
 
 # Create your views here.
 
@@ -48,3 +50,16 @@ def export_products_csv(request):
         writer.writerow([product.name, product.category.name, product.price, product.stock])
 
     return response
+
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('inventory:index')  # Redirect to a 'success' page or the inventory index
+    else:
+        form = SignUpForm()
+    return render(request, 'registration/signup.html', {'form': form})
