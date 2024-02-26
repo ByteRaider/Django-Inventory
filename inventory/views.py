@@ -6,10 +6,12 @@ from django.shortcuts import render, redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 import csv
 from .models import Product, Category, Transaction
-from .forms import SignUpForm
+from .forms import SignUpForm, ProductForm
 
 # Create your views here.
 
+def index(request):
+    return render(request, 'index.html')
 
 class ProductListView(ListView):
     model = Product
@@ -25,19 +27,20 @@ class ProductListView(ListView):
 
 class ProductCreateView(CreateView):
     model = Product
-    fields = '__all__'
+    form_class = ProductForm
+    template_name = 'inventory/product_form.html'
     success_url = reverse_lazy('product_list')
 
 class ProductUpdateView(UpdateView):
     model = Product
-    fields = '__all__'
+    form_class = ProductForm
+    template_name = 'inventory/product_form.html'
     success_url = reverse_lazy('product_list')
 
 class ProductDeleteView(DeleteView):
     model = Product
-    context_object_name = 'product'
-    success_url = reverse_lazy('product_list')
     template_name = 'inventory/product_confirm_delete.html'
+    success_url = reverse_lazy('product_list')
 
 def export_products_csv(request):
     response = HttpResponse(content_type='text/csv')
@@ -59,7 +62,12 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('inventory:index')  # Redirect to a 'success' page or the inventory index
+            return redirect('login')  # Redirect to a 'success' page or the inventory index
     else:
         form = SignUpForm()
     return render(request, 'registration/signup.html', {'form': form})
+
+
+def pos_view(request):
+    products = Product.objects.all()
+    return render(request, 'inventory/pos.html', {'products': products})

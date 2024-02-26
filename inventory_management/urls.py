@@ -26,5 +26,6 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('accounts/', include('django.contrib.auth.urls')),
     # Include app's urls
-    path('', include('inventory.urls')),
+    path('', views.index, name='index'),
+    path('inventory/', include('inventory.urls')),
 ]
