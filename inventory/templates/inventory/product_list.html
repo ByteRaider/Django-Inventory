@@ -1,1 +1,33 @@
-{% extends "base.html" %} {% block content %} Soem Random content {% endblock %}
+{% extends "inventory/base.html" %} {% block content %}
+<h2>Product List</h2>
+<!-- Search form -->
+<form method="get">
+  <input
+    type="text"
+    name="q"
+    placeholder="Search products..."
+    value="{{ request.GET.q }}"
+  />
+  <button type="submit">Search</button>
+</form>
+<!-- Product list -->
+<div class="product-list">
+  {% if products %}
+  <ul>
+    {% for product in products %}
+    <li>
+      <h3>{{ product.name }}</h3>
+      <p>{{ product.description }}</p>
+      <!-- You can also include an image if your Product model has an image field -->
+      {% if product.image %}
+      <img src="{{ product.image.url }}" alt="{{ product.name }}" />
+      {% endif %}
+      <!-- Add more product details here as needed -->
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>No products found.</p>
+  {% endif %}
+</div>
+{%endblock %}
