@@ -13,12 +13,17 @@
       crossorigin="anonymous"
     />
 
-    <title>Hello, world!</title>
+    <title>inventory System: {% block title %} {% endblock %}</title>
   </head>
   <body>
-    <h1>Hello, world!</h1>
-    {% block content %} {% endblock %}
+    <nav></nav>
+    <section>
+      <h1>{% body title %} {% endblock %}</h1>
+     <article>
+      {% block content %} {% endblock %}
+     </article>
 
+    </section>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

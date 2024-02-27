@@ -1,58 +1,67 @@
-{% extends "inventory/base.html" %} {% block content %}
-<h2>Product List</h2>
-<!-- Search form -->
-<form method="get">
-  <input
-    type="text"
-    name="q"
-    placeholder="Search products..."
-    value="{{ request.GET.q }}"
-  />
-  <button type="submit">Search</button>
-</form>
-<!-- Product list -->
-<div class="product-list">
-  {% if products %}
-  <ul>
-    <!-- check if the user is logged in -->
-    {% if user.is_authenticated %}
-    <a href="{% url 'product_add' %}">Add a Product</a>
-    <!-- Loop through the products and display them in a list -->
-    {% for product in products %}
-    <li>
-      <h3>{{ product.name }}</h3>
-      <p>Price: {{ product.price }}</p>
-      <p>Stock: {{ product.stock }}</p>
-      <p>{{ product.description }}</p>
-      <!-- You can also include an image if your Product model has an image field -->
-      {% if product.image %}
-      <img src="{{ product.image.url }}" alt="{{ product.name }}" />
+{% extends '../inventory/base.html' %} 
+{% block title %}Products{% endblock %}
+{% block body_title %}Product list {% endblock %}
+
+{% block content %}
+  <h2>Products:</h2>
+  <!-- Search form -->
+  <form method="get">
+    <input
+      type="text"
+      name="q"
+      placeholder="Search products..."
+      value="{{ request.GET.q }}"
+    />
+    <button type="submit">Search</button>
+  </form>
+
+
+    <!-- Product list -->
+    <div class="container">
+      <table class="table table-hover">
+                  {% if products and user.is_authenticated %}
+                  <p>You are logged in as {{ user.username }}</p>
+                  
+                  <thead>
+                    <tr class="table-info">
+                      <th scope="col">Product</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Stock</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Category</th>
+                      <th scope="col">Edit</th>
+                      <th scope="col">Delete</th>
+                    </tr>
+                  </thead>
+                  {% for product in products %}
+                  <tbody>
+                    <tr class="table-{{ product.color }}">
+                      <th scope="row"> {{ product.name }}</th>
+                      <td>{{ product.price }}</td>
+                      <td>{{product.stock}}</td>
+                      <td>{{product.description}}</td>
+                      <td>{{product.category.name}}</td>
+                      <td><a href="{% url 'product_edit' product.id as pk %}">Edit</a></td>
+                      <td><a href="{% url 'product_delete' product.id as pk%}">Delete</a></td>
+                    </tr>
+                  </tbody>
+                  {% endfor %}
+                  {% else %}
+                  <thead>
+                    <tr class="table-info">
+                      <th scope="col">Product</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Stock</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="table-{{ product.color }}">
+                      <th scope="row"> {{ product.name }}</th>
+                      <td>{{product.description}}</td>
+                      <td>{{product.stock}}</td>
+                    </tr>
+                  </tbody>	
+                </table>
+      </div>
       {% endif %}
-      <a href="{% url 'product_edit' product.id %}">Edit</a>
-      <a href="{% url 'product_delete' product.id %}">Delete</a>
-    </li>
-    {% endfor %} {% else %}
-
-    <!-- Loop through the products and display them in a list -->
-    {% for product in products %}
-    <li>
-      <h3>{{ product.name }}</h3>
-      <p>Price: {{ product.price }}</p>
-      <p>Stock: {{ product.stock }}</p>
-      <p>{{ product.description }}</p>
-      <!-- You can also include an image if your Product model has an image field -->
-      {% if product.image %}
-      <img src="{{ product.image.url }}" alt="{{ product.name }}" />
-
-      {% endif %}
-      <!-- Add more product details here as needed -->
-    </li>
-    {% endfor %}
-  </ul>
-  <a href="{% url 'login' %}">Log In to add a product</a>
-  {% endif %} {% else %}
-  <p>No products found.</p>
-
-  {% endif %}
-</div>
-{%endblock %}
+{% endblock %}

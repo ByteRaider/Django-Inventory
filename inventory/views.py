@@ -22,6 +22,15 @@ class ProductListView(ListView):
         if query:
             return Product.objects.select_related('category').filter(Q(name__icontains=query) | Q(category__name__icontains=query))
         return Product.objects.select_related('category').all()
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        for product in context['products']:
+            if product.stock <= 5:
+                product.color = 'danger'
+            elif product.stock > 5 and product.stock <= 10:
+                product.color = 'warning'
+        return context
+
 
 class ProductCreateView(CreateView):
     model = Product
