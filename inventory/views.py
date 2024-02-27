@@ -20,10 +20,8 @@ class ProductListView(ListView):
     def get_queryset(self):
         query = self.request.GET.get('q')
         if query:
-            return Product.objects.filter(
-                Q(name__icontains=query) | Q(description__icontains=query)
-            )
-        return super().get_queryset()
+            return Product.objects.select_related('category').filter(Q(name__icontains=query) | Q(category__name__icontains=query))
+        return Product.objects.select_related('category').all()
 
 class ProductCreateView(CreateView):
     model = Product
