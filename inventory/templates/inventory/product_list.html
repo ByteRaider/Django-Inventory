@@ -5,30 +5,44 @@
 {% block content %}
 <h2>Products:</h2>
 <!-- Search form -->
+<div class="row">
+  <div class="container">
+
 <form method="get" style="margin-bottom: 20px;">
-  <input
+  <input class="form-control"
     type="text"
     name="q"
     placeholder="Search products..."
     value="{{ request.GET.q }}"
   />
-  <button type="submit">Search</button>
+  <button class="btn btn-primary form-control" type="submit">Search</button>
+</div>
+</div>
 
   <!-- Sorting options -->
-  <select name="sort">
-    <option value="name">Name</option>
-    <option value="price">Price</option>
-    <option value="stock">Stock</option>
-    <option value="category">Category</option>
-  </select>
+<div class="row">
+  <div class="col-5">
+    <select class="form-control"  name="sort">
+      <option value="name">Name</option>
+      <option value="price">Price</option>
+      <option value="stock">Stock</option>
+      <option value="category">Category</option>
+    </select>
+  </div>
+  <div class="col-5">
+    <select class="form-control" name="order">
+      <option value="asc">Ascending</option>
+      <option value="desc">Descending</option>
+    </select>
 
-  <select name="order">
-    <option value="asc">Ascending</option>
-    <option value="desc">Descending</option>
-  </select>
+  </div>
+  <div class="col-2">
+    <button class="btn btn-primary form-control" type="submit">Sort</button>
+  </div>
+</div>
 
-  <button type="submit">Sort</button>
-</form>
+
+
 
 <!-- Product list -->
 <div class="container">
@@ -49,11 +63,11 @@
     </thead>
     {% for product in products %}
     <tbody>
-      <tr class="table-{{ product.color }}">
+      <tr class="{{ product.color }}">
         <th scope="row"> {{ product.name }}</th>
         <td>{{ product.price }}</td>
         <td>{{ product.stock }}</td>
-        <td>{{ product.description }}</td>
+        <td>{{ product.description | truncatewords:10 }}</td>
         <td>{{ product.category.name }}</td>
         <td><a href="{% url 'product_edit' product.id %}">Edit</a></td>
         <td><a href="{% url 'product_delete' product.id %}">Delete</a></td>
@@ -69,7 +83,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="table-{{ product.color }}">
+      <tr class="{{ product.color }}">
         <th scope="row"> {{ product.name }}</th>
         <td>{{ product.description }}</td>
         <td>{{ product.stock }}</td>

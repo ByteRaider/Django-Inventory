@@ -47,11 +47,11 @@ class ProductListView(ListView):
         context = super().get_context_data(**kwargs)
         # Dynamically set color attribute based on stock levels
         for product in context['products']:
-            product.color = 'info'  # Default color, you can adjust as needed
+            product.color = 'product_ok'  # Default color, you can adjust as needed
             if product.stock <= 5:
-                product.color = 'danger'
+                product.color = 'product_danger'
             elif 5 < product.stock <= 10:
-                product.color = 'warning'
+                product.color = 'product_low'
         return context
 
 
