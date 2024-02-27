@@ -1,67 +1,81 @@
-{% extends '../inventory/base.html' %} 
+{% extends '../inventory/base.html' %}
 {% block title %}Products{% endblock %}
-{% block body_title %}Product list {% endblock %}
+{% block body_title %}Product list{% endblock %}
 
 {% block content %}
-  <h2>Products:</h2>
-  <!-- Search form -->
-  <form method="get">
-    <input
-      type="text"
-      name="q"
-      placeholder="Search products..."
-      value="{{ request.GET.q }}"
-    />
-    <button type="submit">Search</button>
-  </form>
+<h2>Products:</h2>
+<!-- Search form -->
+<form method="get" style="margin-bottom: 20px;">
+  <input
+    type="text"
+    name="q"
+    placeholder="Search products..."
+    value="{{ request.GET.q }}"
+  />
+  <button type="submit">Search</button>
 
+  <!-- Sorting options -->
+  <select name="sort">
+    <option value="name">Name</option>
+    <option value="price">Price</option>
+    <option value="stock">Stock</option>
+    <option value="category">Category</option>
+  </select>
 
-    <!-- Product list -->
-    <div class="container">
-      <table class="table table-hover">
-                  {% if products and user.is_authenticated %}
-                  <p>You are logged in as {{ user.username }}</p>
-                  
-                  <thead>
-                    <tr class="table-info">
-                      <th scope="col">Product</th>
-                      <th scope="col">Price</th>
-                      <th scope="col">Stock</th>
-                      <th scope="col">Description</th>
-                      <th scope="col">Category</th>
-                      <th scope="col">Edit</th>
-                      <th scope="col">Delete</th>
-                    </tr>
-                  </thead>
-                  {% for product in products %}
-                  <tbody>
-                    <tr class="table-{{ product.color }}">
-                      <th scope="row"> {{ product.name }}</th>
-                      <td>{{ product.price }}</td>
-                      <td>{{product.stock}}</td>
-                      <td>{{product.description}}</td>
-                      <td>{{product.category.name}}</td>
-                      <td><a href="{% url 'product_edit' product.id as pk %}">Edit</a></td>
-                      <td><a href="{% url 'product_delete' product.id as pk%}">Delete</a></td>
-                    </tr>
-                  </tbody>
-                  {% endfor %}
-                  {% else %}
-                  <thead>
-                    <tr class="table-info">
-                      <th scope="col">Product</th>
-                      <th scope="col">Description</th>
-                      <th scope="col">Stock</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="table-{{ product.color }}">
-                      <th scope="row"> {{ product.name }}</th>
-                      <td>{{product.description}}</td>
-                      <td>{{product.stock}}</td>
-                    </tr>
-                  </tbody>	
-                </table>
-      </div>
-      {% endif %}
+  <select name="order">
+    <option value="asc">Ascending</option>
+    <option value="desc">Descending</option>
+  </select>
+
+  <button type="submit">Sort</button>
+</form>
+
+<!-- Product list -->
+<div class="container">
+  <table class="table table-hover">
+    {% if products and user.is_authenticated %}
+    <p>You are logged in as {{ user.username }}</p>
+
+    <thead>
+      <tr class="table-info">
+        <th scope="col">Product</th>
+        <th scope="col">Price</th>
+        <th scope="col">Stock</th>
+        <th scope="col">Description</th>
+        <th scope="col">Category</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    {% for product in products %}
+    <tbody>
+      <tr class="table-{{ product.color }}">
+        <th scope="row"> {{ product.name }}</th>
+        <td>{{ product.price }}</td>
+        <td>{{ product.stock }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.category.name }}</td>
+        <td><a href="{% url 'product_edit' product.id %}">Edit</a></td>
+        <td><a href="{% url 'product_delete' product.id %}">Delete</a></td>
+      </tr>
+    </tbody>
+    {% endfor %}
+    {% else %}
+    <thead>
+      <tr class="table-info">
+        <th scope="col">Product</th>
+        <th scope="col">Description</th>
+        <th scope="col">Stock</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-{{ product.color }}">
+        <th scope="row"> {{ product.name }}</th>
+        <td>{{ product.description }}</td>
+        <td>{{ product.stock }}</td>
+      </tr>
+    </tbody>
+    {% endif %}
+  </table>
+</div>
 {% endblock %}

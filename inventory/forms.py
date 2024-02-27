@@ -14,3 +14,4 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = ('id','name', 'price', 'stock', 'description', 'category' )
+        sortable_fields = ('name', 'price', 'stock', 'category' )
