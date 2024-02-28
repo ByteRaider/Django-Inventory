@@ -1,0 +1,66 @@
+:root{
+  --primary-color: #949494;
+  --secondary-color: #1e2020f6;
+  --primary-accent-color: #6c63ff;
+  --secondary-accent-color: #e05429ec;
+  --box-shadow: 0 5px 10px #01718036;
+}
+
+body {
+  margin: 0;
+}
+
+h1, h2 {
+  text-align: center;
+  margin: 0;
+}
+
+h1 {
+  font-size: 3.5rem;
+}
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+section {
+  padding: 5rem 0;
+  box-shadow: var(--box-shadow);
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+  color: var(--primary-accent-color);
+}
+
+.product_danger {
+  border: 1px solid red;
+  overflow: auto;
+}
+
+.product_low {
+  border: 1px solid yellow;
+  overflow: auto;
+
+}
+.product_ok {
+  border: 1px solid green;
+  overflow: hidden;
+}
