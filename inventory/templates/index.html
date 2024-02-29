@@ -18,10 +18,10 @@
 /* Color Variables */
 :root {
   --dark: rgb(20, 20, 20);
-  --yellow: rgb(253, 216, 53);
-  --blue: rgb(98, 0, 234);
-  --left-color: var(--yellow);
-  --right-color: var(--dark);
+  --color1: rgba(92, 190, 247, 0.884);
+  --color2: rgb(98, 0, 234);
+  --left-color: var(--color1);
+  --right-color: var(--color2);
 }
 
 /* Base Styles */
@@ -101,7 +101,7 @@ a {
 }
 
 #right-side .title {
-  color: var(--yellow);
+  color: var(--color1);
 }
 
 #right-side .cool,
@@ -113,28 +113,34 @@ a {
   color: var(--dark);
 }
 
-/* Hero credits for css & js https://codepen.io/noob_coder__/pen/YzggMqa */
+
 </style>
-<div class="container">
-    <div class="image-container">
+
+    <picture>
+      <div class="row">
         {% load static %}
-<img class="image" style="width: 240px;" src="{% static 'img/hero.jpg' %}" alt="Hero Image">
-    </div>
-</div>
+        <div class="container-fluid d-flex col-md-6 col-sm-12">
+          <a  href="#"><img class="img-fluid mx-auto pe-5" src="{% static 'img/icon.png' %}" alt="Hero Image"></a>
+          <img class="img-fluid img-thumbnail  mx-auto" style="width: 240px;" src="{% static 'img/hero.jpg' %}" alt="Hero Image">
+          <a href="#"><img class="img-fluid mx-auto p-5" src="{% static 'img/logo.png' %}" alt="Hero Image"></a>
+        </div>
+      </div>
+    </picture>
+
 
 <main>
     <section class="hero-wrapper">
       <!-- Left Side -->
       <article id="left-side" class="hero-side">
         <h1 class="title">
-          Inventory<span data-value="Inventory" id="frontend" class="cool">system</span> project
+          Welcome to the <span data-value="Inventory" id="frontend" class="cool">Inventory</span> SYSTEM
         </h1>
         <a href="{% url 'login' %}" class="name" id="first-name" aria-label="First Name: Noob">login</a>
       </article>
       <!-- Right Side -->
       <article id="right-side" class="hero-side">
         <h1 class="title">
-          Inventory: <span data-value="Create" id="backend" class="cool">Create and manage</span> your products
+          Inventory: <span data-value="Create And Manage" id="backend" class="cool">Create And Manage</span> your products
         </h1>
         <a href="{% url 'signup' %}" class="name" id="last-name" aria-label="Last Name: Coder">signup</a>
       </article>
@@ -157,6 +163,7 @@ document.addEventListener("mousemove", handleMovement);
 document.addEventListener("touchmove", (event) => handleMovement(event));
 
 // Function to animate text change on mousemove over the backend element
+// adding credits for frontend Hero animation: https://codepen.io/noob_coder__/pen/YzggMqa 
 const animateTextChange = (event) => {
   const targetElement = event.target;
   let iterations = 0;
