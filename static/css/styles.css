@@ -31,10 +31,12 @@ h3 {
 p {
   margin: 0;
 }
-
-img {
-  width: 100%;
-  height: auto;
+.navIcon {
+  width: 20px;
+}
+.heroIcon {
+  width: 150px;
+  margin: 0 auto;
 }
 
 section {
@@ -43,7 +45,13 @@ section {
   background-color: var(--secondary-color);
   color: var(--primary-font-color);
 }
-
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  background-color: var(--primary-accent-color);
+  color: white;
+  border: 1px solid var(--secondary-accent-color);
+}
 a {
   text-decoration: none;
 }
@@ -65,4 +73,16 @@ a:hover {
 .product_ok {
   border: 1px solid green;
   overflow: hidden;
+}
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 5rem;
+  }
+  h2 {
+    font-size: 3.5rem;
+  }
+  
+}
+.heroIcon {
+  width: 50px;
 }

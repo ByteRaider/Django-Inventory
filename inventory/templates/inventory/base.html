@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-{% load static %}
 <html lang="en" data-bs-theme="dark">
   <head>
     <!-- Required meta tags -->
@@ -15,12 +14,14 @@
       integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
       crossorigin="anonymous"
     />
+    <!-- favicon -->
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favico.ico' %}" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
     <title>inventory System: {% block title %} {% endblock %}</title>
   </head>
   <body>
-    {% block stylesheet %} {% endblock %}
     <navbar>
       {% include 'inventory/components/navbar.html' %}
     </navbar>

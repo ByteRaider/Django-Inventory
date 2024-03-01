@@ -1,8 +1,6 @@
 {% extends 'inventory/base.html' %} 
-{% block stylesheet %} 
-{% endblock %}
-{% block title %}Home{% endblock %}
-{% block body_title %}Home{% endblock %}
+{% block title %}Inventory System{% endblock %}
+{% block body_title %}{% load static %}<img class="img-fluid img-thumbnail  mx-auto justify-content-center" src="{% static 'img/hero.jpg' %}" alt="Hero Image">{% endblock %}
 
 {% block content %}
 <style>
@@ -119,10 +117,47 @@ a {
     <picture>
       <div class="row">
         {% load static %}
-        <div class="container-fluid d-flex col-md-6 col-sm-12">
-          <a  href="#"><img class="img-fluid mx-auto pe-5" src="{% static 'img/icon.png' %}" alt="Hero Image"></a>
-          <img class="img-fluid img-thumbnail  mx-auto" style="width: 240px;" src="{% static 'img/hero.jpg' %}" alt="Hero Image">
-          <a href="#"><img class="img-fluid mx-auto p-5" src="{% static 'img/logo.png' %}" alt="Hero Image"></a>
+        <div class="col-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn ">Go somewhere</a>
+            </div>
+          </div>
+
+        
+          <a href="#"><img class="heroIcon" src="{% static 'img/logo.png' %}" alt="Hero Image"></a>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn ">Go somewhere</a>
+            </div>
+          </div>
+          
+        </div>
+        <div class="col-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn ">Go somewhere</a>
+            </div>
+          </div>
+
+        
+          <a href="#"><img class="heroIcon" src="{% static 'img/logo.png' %}" alt="Hero Image"></a>
+          
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn ">Go somewhere</a>
+            </div>
+          </div>
+          
+        </div>
         </div>
       </div>
     </picture>
