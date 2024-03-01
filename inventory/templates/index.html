@@ -1,6 +1,6 @@
 {% extends 'inventory/base.html' %} 
 {% block title %}Inventory System{% endblock %}
-{% block body_title %}{% load static %}<img class="img-fluid img-thumbnail  mx-auto justify-content-center" src="{% static 'img/hero.jpg' %}" alt="Hero Image">{% endblock %}
+{% block body_title %}Welcome to Inventory System{% endblock %}
 
 {% block content %}
 <style>
@@ -114,11 +114,11 @@ a {
 
 </style>
 
-    <picture>
+  
       <div class="row">
         {% load static %}
         <div class="col-6">
-          <div class="card">
+          <div data-aos="flip-right" class="card">
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -128,7 +128,7 @@ a {
 
         
           <a href="#"><img class="heroIcon" src="{% static 'img/logo.png' %}" alt="Hero Image"></a>
-          <div class="card">
+          <div data-aos="flip-right" class="card">
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -138,7 +138,8 @@ a {
           
         </div>
         <div class="col-6">
-          <div class="card">
+          <div data-aos="flip-left" data-aos-offset="300"
+          data-aos-easing="ease-in-sine" class="card">
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -149,7 +150,8 @@ a {
         
           <a href="#"><img class="heroIcon" src="{% static 'img/logo.png' %}" alt="Hero Image"></a>
           
-          <div class="card">
+          <div data-aoe="flip-left" data-aos-offset="300"
+          data-aos-easing="ease-in-sine" class="card">
             <div class="card-body">
               <h5 class="card-title">Card title</h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -160,10 +162,10 @@ a {
         </div>
         </div>
       </div>
-    </picture>
+   
 
 
-<main>
+<main data-aos="">
     <section class="hero-wrapper">
       <!-- Left Side -->
       <article id="left-side" class="hero-side">
