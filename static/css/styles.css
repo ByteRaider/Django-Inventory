@@ -31,6 +31,7 @@ h3 {
 p {
   margin: 0;
 }
+
 .navIcon {
   width: 20px;
 }
@@ -78,7 +79,7 @@ a:hover {
   overflow: hidden;
 }
 
-#id_username, #id_password {
+#id_username, #id_password, #id_email, #id_password1, #id_password2 {
   width: 50%;
   margin: 0 auto;
   display: block;
@@ -86,6 +87,15 @@ a:hover {
   margin-bottom: 1rem;
   border-radius: 5px;
   border: 1px solid var(--primary-color);
+  
+}
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 4rem;
+  }
+  h2 {
+    font-size: 3rem;
+  }
   
 }
 

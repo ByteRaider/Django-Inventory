@@ -49,7 +49,6 @@
   <table class="table table-hover">
     {% if products and user.is_authenticated %}
     <p>You are logged in as {{ user.username }}</p>
-
     <thead>
       <tr class="table-info">
         <th scope="col">Product</th>
@@ -63,7 +62,7 @@
     </thead>
     {% for product in products %}
     <tbody>
-      <tr class="{{ product.color }}">
+      <tr data-aos="fade-up" class="{{ product.color }}">
         <th scope="row"> {{ product.name }}</th>
         <td>{{ product.price }}</td>
         <td>{{ product.stock }}</td>
@@ -74,21 +73,14 @@
       </tr>
     </tbody>
     {% endfor %}
-    {% else %}
-    <thead>
-      <tr class="table-info">
-        <th scope="col">Product</th>
-        <th scope="col">Description</th>
-        <th scope="col">Stock</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="{{ product.color }}">
-        <th scope="row"> {{ product.name }}</th>
-        <td>{{ product.description }}</td>
-        <td>{{ product.stock }}</td>
-      </tr>
-    </tbody>
+  {% else %}
+  <div class="container text-center justify-content-center">
+    <p data-aos="fade-left" class="text-danger text-center">You are not logged in</p>
+    
+    {%load static%}
+    
+    <img data-aos="zoom-in" class="img-fluid rounded mx-auto" src="{% static 'img/door.webp' %}" alt="Image or a robot looking outside">
+  </div>
     {% endif %}
   </table>
 </div>
