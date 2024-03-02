@@ -1,9 +1,23 @@
-{% extends '../inventrory/templates/inventrory/base.html' %} 
-
+{% extends '../inventory/base.html' %} 
+<!--  styling boody tag -->
+{% block body_attr %} 
+class="login"
+data-aos="zoom-in"
+data-aos-easing="linear"
+data-aos-duration="400"
+{% endblock %}
+<!---->
 {% block title %}We'll miss you!{% endblock %}
+<!---->
 {% block body_title %}Logout{% endblock %}
-
+<!----->
 {% block content %}
-<h2>You have been logged out</h2>
-<a href="{% url 'login' %}">Log in again</a>
+<div class="container justify-content-center">
+    <h2 data-aos="fade-right" class=" text-center ">You have been logged out</h2>
+</div>
+<div class="container justify-content-center">
+
+    <a href="{% url 'login' %}">Log in again</a>
+
+</div>
 {% endblock %}
