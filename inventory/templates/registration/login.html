@@ -1,11 +1,20 @@
 {% extends '../inventory/base.html' %} 
+<!--  styling boody tag -->
+{% block body_attr %} 
+class="login"
+data-aos="zoom-in"
+data-aos-easing="linear"
+data-aos-duration="400"
+{% endblock %}
+<!---->
 {% block title %}Login{% endblock %}
+<!---->
 {% block body_title %}Login{% endblock %}
-
+<!---->
 {% block content %}
 <div class="container"><h2 data-aos="fade-right"> Identify yourself</h2>
   <div class="container" data-aos="fade-right"
-  data-aos-offset="300"
+  data-aos-offset="250"
   data-aos-easing="ease-in-sine">  
   {% if form.errors %}
 <p class="errornote">Your username and password didn't match. Please try again.</p>

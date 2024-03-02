@@ -36,7 +36,7 @@
     <!-- Title -->
     <title>inventory System: {% block title %} {% endblock %}</title>
   </head>
-  <body>
+  <body {% block body_attr %} {% endblock %}>
     <navbar>
       {% include 'inventory/components/navbar.html' %}
     </navbar>

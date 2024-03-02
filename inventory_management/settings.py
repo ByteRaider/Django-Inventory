@@ -132,7 +132,7 @@ INTERNAL_IPS = [
 ]
 
 LOGIN_REDIRECT_URL = "product_list"
-LOGOUT_REDIRECT_URL = "product_list"
+LOGOUT_REDIRECT_URL = "login"
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 

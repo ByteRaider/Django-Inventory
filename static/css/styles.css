@@ -79,6 +79,24 @@ a:hover {
   overflow: hidden;
 }
 
+.login {
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+
+  background-image: url('/static/img/door.webp'); /* Adjust path as necessary */
+  background-repeat: no-repeat;
+  color: white;
+}
+.signup {
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+
+  background-image: url('/static/img/doorOpen.webp'); /* Adjust path as necessary */
+  background-repeat: no-repeat;
+  color: white;
+}
+
+
 #id_username, #id_password, #id_email, #id_password1, #id_password2 {
   width: 50%;
   margin: 0 auto;
@@ -96,7 +114,9 @@ a:hover {
   h2 {
     font-size: 3rem;
   }
-  
+  .login, .signup {
+    background-position:50% 0%;
+  }
 }
 
 @media screen and (max-width: 768px) {
