@@ -73,14 +73,17 @@ class ProductDeleteView(DeleteView):
     success_url = reverse_lazy('product_list')
 
 def export_products_csv(request):
-    response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename="products.csv"'
+    response = HttpResponse(
+        content_type='text/csv',
+        headers={'Content-Disposition': 'attachment; filename="products.csv"'},
+    )
 
     writer = csv.writer(response)
     writer.writerow(['Name', 'Category', 'Price', 'Stock'])
 
     for product in Product.objects.all():
         writer.writerow([product.name, product.category.name, product.price, product.stock])
+        
 
     return response
 

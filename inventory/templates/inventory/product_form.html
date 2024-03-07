@@ -1,7 +1,16 @@
-{% extends 'inventory/base.html' %} {% block content %}
-<h2>Product Form</h2>
-<form method="post" enctype="multipart/form-data">
+{% extends 'inventory/base.html' %}
+{% block title %}Product Form
+{% endblock %}
+
+{% block content %}
+
+<div class="container justify-content-center text-center my-5">
+  <div class="item form container row gy-3 align-items-center justify-content-center text-center rounded shadow p-3 mb-5 bg-body ">
+    <h2>Product Form</h2>
+<form method="post" enctype="multipart/form-data" class="form-group">
   {% csrf_token %} {{ form.as_p }}
   <button type="submit">Save</button>
 </form>
+  </div>
+</div>
 {% endblock %}
